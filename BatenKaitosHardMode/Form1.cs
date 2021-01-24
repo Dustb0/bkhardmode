@@ -24,16 +24,6 @@ namespace BatenKaitosHardMode
             setupTimer.Start();
         }
 
-        private void AdjustPartyMapHP()
-        {
-            // Map
-            if (manager.GetCharMapHP(0) > 40)
-            {
-                manager.SetCharMapHP(0, 30);
-                Log("Set Kalas HP to 60");
-            }
-        }
-
         private void AdjustPartyBattleHP()
         {
             // Get modifier
@@ -63,8 +53,6 @@ namespace BatenKaitosHardMode
 
         private void mainTimer_Tick(object sender, EventArgs e)
         {
-            //AdjustPartyMapHP();
-
             manager.ReadBattleFlags();
             if (manager.IsInBattle() && manager.AreCharsBattleReady())
             {

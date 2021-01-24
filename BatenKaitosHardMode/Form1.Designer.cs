@@ -115,7 +115,7 @@
             this.logBox.FormattingEnabled = true;
             this.logBox.Location = new System.Drawing.Point(13, 67);
             this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(759, 143);
+            this.logBox.Size = new System.Drawing.Size(773, 143);
             this.logBox.TabIndex = 5;
             // 
             // partyHPText
