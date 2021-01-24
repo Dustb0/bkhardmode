@@ -7,13 +7,13 @@ namespace BatenKaitosHardMode
 {
     public partial class Form1 : Form
     {
-        private MemoryManipulator manager;
+        private BKManager manager;
         private bool hpChanged;
 
         public Form1()
         {
             InitializeComponent();
-            manager = new MemoryManipulator();
+            manager = new BKManager();
 
             // Restore settings
             partyHPText.Text = Settings.Default.PartyHPModifier.ToString();
@@ -27,9 +27,9 @@ namespace BatenKaitosHardMode
         private void AdjustPartyMapHP()
         {
             // Map
-            if (manager.GetPartyMapHP(PartyMembers.Kalas) > 40)
+            if (manager.GetCharMapHP(0) > 40)
             {
-                manager.SetPartyMapHP(PartyMembers.Kalas, 30);
+                manager.SetCharMapHP(0, 30);
                 Log("Set Kalas HP to 60");
             }
         }
@@ -44,19 +44,19 @@ namespace BatenKaitosHardMode
             for (int i = 0; i < partySize; ++i)
             {
                 // Calculate MAX HP
-                int oldMaxHP = (int) manager.GetPartyBattleMaxHP(i);
-                int modifiedMaxHP = (int)Math.Ceiling(manager.GetPartyBattleMaxHP(i) * partyHPModifier);
+                int oldMaxHP = (int) manager.GetCharBattleMaxHP(i);
+                int modifiedMaxHP = (int)Math.Ceiling(manager.GetCharBattleMaxHP(i) * partyHPModifier);
 
                 // Check if current HP go over MAX
-                long currentHP = manager.GetPartyBattleHP(i);
+                long currentHP = manager.GetCharBattleHP(i);
                 if (currentHP > modifiedMaxHP)
                 {
                     // Cap at MAX HP
-                    manager.SetPartyBattleHP(i, modifiedMaxHP);
+                    manager.SetCharBattleHP(i, modifiedMaxHP);
                 }
 
                 // Write MAX HP
-                manager.SetPartyBattleMaxHP(i, modifiedMaxHP);
+                manager.SetCharBattleMaxHP(i, modifiedMaxHP);
                 Log("Set Char " + i + " HP from " + oldMaxHP + " to " + modifiedMaxHP.ToString());
             }
         }

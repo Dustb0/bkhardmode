@@ -128,7 +128,7 @@
             this.partyHPText.Name = "partyHPText";
             this.partyHPText.Size = new System.Drawing.Size(45, 24);
             this.partyHPText.TabIndex = 4;
-            this.partyHPText.Text = "50";
+            this.partyHPText.Text = "25";
             // 
             // label2
             // 
